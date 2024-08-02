@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarCenteredExample"
+      aria-controls="navbarCenteredExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <img src="static/img/favicon.png">
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse justify-content-center"
+      id="navbarCenteredExample"
+    >
+      <!-- Left links -->
+      <ul class="ul navbar-nav mb-2 mb-lg-0">
+        <li class="li nav-item">
+          <a class="a nav-link" aria-current="page" href="{{ url_for('main') }}">Główna</a>
+        </li>
+        <li class="li nav-item">
+          <a class="a nav-link" aria-current="page" href="{{ url_for('form') }}">Stwórz</a>
+        </li>
+        <li class="li nav-item">
+          <a class="a nav-link" href="{{ url_for('instructions') }}">Instrukcja</a>
+        </li>
+          <li class="li nav-item">
+          <a class="a nav-link" href="{{ url_for('main') }}#about">O projekcie</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
