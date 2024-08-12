@@ -57,215 +57,211 @@
         {% include 'head.html' %}
     </head>
     <body>
-       <div class="fourth-page wrapper">
-           {% include 'header.html' %}
-           <div class="container tlo">
-                <div class="row">
-                    <h1 class="instructions-header">Spis treści</h1>
-                    <div class="instructions-list">
-                        <ol>
-                            <li><a href="#form"><p>Formularz</p></a></li>
-                            <li><a href="#preview"><p>Podgląd</p></a></li>
-                            <li><a href="#package"><p>Paczka</p></a></li>
-                            <li><a href="#hosting_and_address"><p>Hosting i domena</p></a></li>
-                            <li><a href="#upload"><p>Upload na serwer</p></a></li>
-                        </ol>
-                    </div>
-                    <h1 class="instructions-header" id="form">Zacznij od wypełnienia formularza.</h1>
-                    <h2>W formularzu czekają na Ciebie następujące pola do&nbsp;wypełnienia:</h2>
-                    <div class="instructions-list">
-                        <h3><strong>Nazwa strony</strong></h3>
-                        <p>Nazwa może być Twoim imieniem i&nbsp;nazwiskiem, pseudonimem artystycznym,
-                        frazą, która Cię wyraża. Zadbaj o&nbsp;to, by była krótka i chwytliwa &mdash; to&nbsp;pierwsze, co&nbsp;zobaczy odwiedzający.</p>
-                        <hr>
+    {% include 'header.html' %}
+       <div class="content_instructions">
+            <h1 class="instructions-header">Spis treści</h1>
+            <div class="instructions-list">
+                <ol>
+                    <li><a href="#form"><p>Formularz</p></a></li>
+                    <li><a href="#preview"><p>Podgląd</p></a></li>
+                    <li><a href="#package"><p>Paczka</p></a></li>
+                    <li><a href="#hosting_and_address"><p>Hosting i domena</p></a></li>
+                    <li><a href="#upload"><p>Upload na serwer</p></a></li>
+                </ol>
+            </div>
+            <h1 class="instructions-header" id="form">Zacznij od wypełnienia formularza.</h1>
+            <h2>W formularzu czekają na Ciebie następujące pola do&nbsp;wypełnienia:</h2>
+            <div class="instructions-list">
+                <h3><strong>Nazwa strony</strong></h3>
+                <p>Nazwa może być Twoim imieniem i&nbsp;nazwiskiem, pseudonimem artystycznym,
+                frazą, która Cię wyraża. Zadbaj o&nbsp;to, by była krótka i chwytliwa &mdash; to&nbsp;pierwsze, co&nbsp;zobaczy odwiedzający.</p>
+                <hr>
 
-                        <h3><strong>Motyw kolorystyczny</strong></h3>
-                        <p>Możesz wybrać jeden z&nbsp;moich motywów - jasny lub ciemny - lub&nbsp;też stworzyć własną kompozycję kolorystyczną.
-                        Jeśli decydujesz&nbsp;się na użycie&nbsp;własnych kolorów, pamiętaj, aby&nbsp;tekst był odpowiednio kontrastowy względem tła.
-                            W&nbsp;ten sposób zachowasz czytelność i&nbsp;przejrzystość treści.
-                        </p>
-                        <hr>
+                <h3><strong>Motyw kolorystyczny</strong></h3>
+                <p>Możesz wybrać jeden z&nbsp;moich motywów - jasny lub ciemny - lub&nbsp;też stworzyć własną kompozycję kolorystyczną.
+                Jeśli decydujesz&nbsp;się na użycie&nbsp;własnych kolorów, pamiętaj, aby&nbsp;tekst był odpowiednio kontrastowy względem tła.
+                    W&nbsp;ten sposób zachowasz czytelność i&nbsp;przejrzystość treści.
+                </p>
+                <hr>
 
-                        <h3 id="layout"><strong>Układ strony</strong></h3>
-                        <p>Twoje prace wyświetlane będą w&nbsp;siatce, tzw.&nbsp;gridzie. Możesz wybrać, aby&nbsp;obrazy wyświetlały&nbsp;się w&nbsp;trzech lub&nbsp;czterech kolumnach.
-                        Przy tym wyborze odpowiedz sobie na&nbsp;kilka pytań: <br>
-                        </p>
-                            <ol>
-                            <li> <strong>Ile masz prac?</strong><br> Im więcej, tym&nbsp;lepiej będzie wyglądać strona.
-                                Sześć obrazów to&nbsp;minimum dla&nbsp;trzech kolumn, a&nbsp;osiem prac dla&nbsp;czterech. Poza&nbsp;tym, jeśli
-                                masz mało prac, to&nbsp;lepiej wybrać trzy kolumny - będzie wizualnie wydawało się ich więcej.
-                            </li>
+                <h3 id="layout"><strong>Układ strony</strong></h3>
+                <p>Twoje prace wyświetlane będą w&nbsp;siatce, tzw.&nbsp;gridzie. Możesz wybrać, aby&nbsp;obrazy wyświetlały&nbsp;się w&nbsp;trzech lub&nbsp;czterech kolumnach.
+                Przy tym wyborze odpowiedz sobie na&nbsp;kilka pytań: <br>
+                </p>
+                    <ol>
+                    <li> <strong>Ile masz prac?</strong><br> Im więcej, tym&nbsp;lepiej będzie wyglądać strona.
+                        Sześć obrazów to&nbsp;minimum dla&nbsp;trzech kolumn, a&nbsp;osiem prac dla&nbsp;czterech. Poza&nbsp;tym, jeśli
+                        masz mało prac, to&nbsp;lepiej wybrać trzy kolumny - będzie wizualnie wydawało się ich więcej.
+                    </li>
 
-                            <li><strong>Przez jaką liczbę dzieli się liczba Twoich prac?</strong><br> Sprawa jest prosta,
-                                jeśli&nbsp;liczba Twoich prac jest wielokrotnością którejś z&nbsp;liczby kolumn, np.&nbsp;
-                            jeśli masz 9&nbsp;prac (3 razy 3), wybierz grid z&nbsp;trzema kolumnami, a&nbsp;jeśli 8 &mdash; z&nbsp;czterema.
-                            Jeżeli liczba Twoich prac nie jest wielokrotnością trójki albo ósemki, po&nbsp;prostu spróbuj, popatrz, w&nbsp;jakiej konfiguracji portfolio bardziej
-                            Ci się podoba. Jeśli zachowasz te&nbsp;zasady, układ obrazów na Twojej stronie
-                            będzie zbalansowany i&nbsp;ładny.
-                            </li>
-                            </ol>
+                    <li><strong>Przez jaką liczbę dzieli się liczba Twoich prac?</strong><br> Sprawa jest prosta,
+                        jeśli&nbsp;liczba Twoich prac jest wielokrotnością którejś z&nbsp;liczby kolumn, np.&nbsp;
+                    jeśli masz 9&nbsp;prac (3 razy 3), wybierz grid z&nbsp;trzema kolumnami, a&nbsp;jeśli 8 &mdash; z&nbsp;czterema.
+                    Jeżeli liczba Twoich prac nie jest wielokrotnością trójki albo ósemki, po&nbsp;prostu spróbuj, popatrz, w&nbsp;jakiej konfiguracji portfolio bardziej
+                    Ci się podoba. Jeśli zachowasz te&nbsp;zasady, układ obrazów na Twojej stronie
+                    będzie zbalansowany i&nbsp;ładny.
+                    </li>
+                    </ol>
 
-                        <hr>
+                <hr>
 
-                        <h3><strong>Wersja językowa</strong></h3>
-                        <p>Treści, które zamieścisz na&nbsp;stronie, będą oczywiście w&nbsp;takim języku, w&nbsp;jakim je napiszesz. Po&nbsp;co więc wybierać język na &nbsp;tym etapie?
-                        To&nbsp;już temat dla wnikliwych &mdash; przeglądarki obsługują tzw.&nbsp;metadane, a&nbsp;wśród nich język strony. Ułatwia to&nbsp;wyszukiwanie, np.&nbsp;w&nbsp;wyszukiwarce
-                            Google lub Bing. Twoja strona będzie więc widoczna dla odbiorców, którzy&nbsp;posługują się wybranym przez Ciebie językiem (lub dla tych,
-                            którzy szukają stron w&nbsp;podanym języku).
-                        </p>
-                        <hr>
+                <h3><strong>Wersja językowa</strong></h3>
+                <p>Treści, które zamieścisz na&nbsp;stronie, będą oczywiście w&nbsp;takim języku, w&nbsp;jakim je napiszesz. Po&nbsp;co więc wybierać język na &nbsp;tym etapie?
+                To&nbsp;już temat dla wnikliwych &mdash; przeglądarki obsługują tzw.&nbsp;metadane, a&nbsp;wśród nich język strony. Ułatwia to&nbsp;wyszukiwanie, np.&nbsp;w&nbsp;wyszukiwarce
+                    Google lub Bing. Twoja strona będzie więc widoczna dla odbiorców, którzy&nbsp;posługują się wybranym przez Ciebie językiem (lub dla tych,
+                    którzy szukają stron w&nbsp;podanym języku).
+                </p>
+                <hr>
 
-                        <h3><strong>Ilość i treść elementów menu</strong></h3>
-                        <p>Na&nbsp;tym etapie wybierz, ile&nbsp;chcesz stworzyć podstron swojego portfolio. Pierwszą, główną podstroną,
-                            będzie galeria Twoich prac&mdash; jest to&nbsp;obowiązkowa pozycja.
-                        Kolejne podstrony będą zawierać treść pisemną. Użyj edytora tekstu, który pozwala na&nbsp;zaawansowaną edycję i&nbsp;formatowanie.
-                            W&nbsp;ten&nbsp;sposób możesz wybrać, które treści
-                        powinny się wyróżniać, możesz użyć punktorów, pogrubienia, kursywy... Czego tylko chcesz!</p>
-                        <hr>
+                <h3><strong>Ilość i treść elementów menu</strong></h3>
+                <p>Na&nbsp;tym etapie wybierz, ile&nbsp;chcesz stworzyć podstron swojego portfolio. Pierwszą, główną podstroną,
+                    będzie galeria Twoich prac&mdash; jest to&nbsp;obowiązkowa pozycja.
+                Kolejne podstrony będą zawierać treść pisemną. Użyj edytora tekstu, który pozwala na&nbsp;zaawansowaną edycję i&nbsp;formatowanie.
+                    W&nbsp;ten&nbsp;sposób możesz wybrać, które treści
+                powinny się wyróżniać, możesz użyć punktorów, pogrubienia, kursywy... Czego tylko chcesz!</p>
+                <hr>
 
-                        <h3><strong>Wrzucone pliki &mdash; konwencja nazewnicza</strong></h3>
-                        <p>Wrzuć wszystkie swoje prace, które chcesz mieć w&nbsp;portfolio. Pamiętaj o&nbsp;zasadach wymienionych w punkcie <a href="#layout"><i>Układ strony</i></a>.
-                            <br>Dzięki zachowanej konwencji nazewniczej można w łatwy sposób przekazać tytuły swoich prac. <br>
-                            Zasada jest tylko jedna: wstaw znak "_" lub "-" pomiędzy słowa w tytule. Aplikacja rozdzieli słowa i pokaże sformatowany tytuł pracy.<br>
-                            <strong>Na przykład:</strong><br>
-                            Plik Mój_Tytuł.png będzie wyświetlał się jako Mój Tytuł. <br>
-                            Plik Drugi-tytuł.jpg będzie wyświetlał się jako Drugi tytuł.
-                        </p>
-                        <hr>
-                    </div>
-                    <center><h2>Skończyłeś? Kliknij <i>Generuj!</i></h2></center>
-                    <br><br>
-                    <h1 class="instructions-header" id="preview">Podgląd</h1>
-                    <div class="instructions-list">
-                        <h3><strong>Sprawdź, czy wszystko gra</strong></h3>
-                        <p>Podgląd od Twojej właściwej strony różni się jedynie elementem u góry strony z trzema przyciskami.
-                        Dlatego właśnie możesz bez obaw poklikać po swojej aplikacji, zobaczyć jak wyglądają podstrony, jak układają się zdjęcia, itd.</p>
-                        <hr>
-                        <h3><strong>Chcę coś jeszcze zmienić!</strong></h3>
-                        <p>Jeśli chcesz coś jeszcze zmienić, ten przycisk zaprowadzi Cię do poprzedniej strony.</p>
-                        <hr>
-                        <h3><strong>Pobierz paczkę</strong></h3>
-                        <p>Jeśli jesteś zadowolony z tego, jak wygląda Twoje portfolio, pobierz paczkę, a następnie wróć do instrukcji
-                            aby dowiedzieć się, co z nią dalej zrobić.</p>
-                        <hr>
-                        <h3><strong>Zabierz mnie do instrukcji</strong></h3>
-                        <p>Ten przycisk zabierze Cię do instrukcji.</p>
-                    </div>
-                    <br><br>
-                    <h1 class="instructions-header" id="package">Paczka</h1>
-                    <div class="instructions-list row">
-                        <h3><strong>Rozpakuj paczkę</strong></h3>
-                        <div class="col-md-6">
-                            <p>Po pobraniu pliku na komputer, rozpakuj plik yourTemplates.zip klikając "Wyodrębniij wszystkie" w menu,
-                            które pojawia się po kliknięciu prawym przyciskiem myszy na pobrany plik.
-                            Po rozpakowaniu, przenieś folder static do folderu o nazwie składającej się z
-                            kilku cyfr rozdzielonych kropką.
-                            Następnie, jeśli chcesz, możesz uruchomić w przeglądarce którąś ze stron z
-                            rozszerzeniem .html i zobaczyć,
-                            jak portfolio wygląda lokalnie.
-                            Strony powinny być gotowe do przekazania ich na serwer.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <img class='img-fluid img-margin' src="static/img/snip1.png">
-                        </div>
-
-                        <hr>
-                    </div>
-
-                    <br><br>
-                    <h1 class="instructions-header" id="hosting_and_address">Hosting i domena</h1>
-                    <div class="instructions-list row">
-                        <h3><strong>Kupno domeny i hostingu</strong></h3>
-                        <div class="col-md-6">
-                            <p>Jeśli masz już domenę i hosting - pomiń ten krok.
-                            Jeśli jednak nie wiesz nawet za bardzo co to jest, czytaj uważnie!
-                            Domena to URL, główny link do Twojej strony.
-                                Hosting to miejsce na serwerze, które musisz kupić, aby móc pod
-                                swoją domeną zamieścić stronę.
-                                Ta instrukcja będzie bazować na działaniu sklepu home.pl,
-                                jednak jeśli czujesz się pewnie, możesz wybrać inny sklep.
-                                <br>
-                                Na stronie wyszukaj interesującą Cię nazwę i dodaj ją do koszyka. Po
-                                przejściu do koszyka, dobierz również hosting i certyfikat SSL.
-                            </p>
-                        </div>
-                            <div class="col-md-6">
-                            <img class='img-fluid img-margin' src="static/img/snip2.png">
-                        </div>
-                            <p>Po ukończeniu płatności odczekaj chwilę aż usługi się aktywują,
-                            a następnie uważnie prześledź kolejne instrukcje oferowane przez
-                            home.pl aby skonfigurować serwer.
-                            </p>
-                        <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/jak-przypisac-domene-do-hostingu-w-panelu-klienta">
-                            Przypisz domenę do hostingu
-                        </a></button>
-                        <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/jak-zalogowac-sie-do-poczty-home-pl">
-                            Zaloguj się do poczty home.pl
-                        </a></button>
-                        <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/aktywacja-oplaconego-certyfikatu-ssl-w-panelu-klienta ">
-                            Aktywuj certyfikat SSL
-                        </a></button>
-                        <hr>
-                    </div>
-                    <h1 class="instructions-header" id="upload">Upload na serwer</h1>
-                    <div class="instructions-list row">
-                        <h3><strong>WebFTP</strong></h3>
-                        <p>Aby przekazać pliki na serwer, użyj aplikacji WebFTP w panelu klienta</p>
-                            <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/jak-uruchomic-webftp-panelu-klienta">
-                            Uruchom WebFTP
-                        </a></button>
-                        <p>
-                            Wejdź do folderu public_html i usuń całą istniejącą zawartość. Następnie
-                            Otwórz lokalnie folder z zawartością portfolio i z menu po kliknięciu prawego
-                            przycisku myszy wybierz opcję "Skompresuj do pliku ZIP".
-                            Następnie wyślij ten plik na serwer klikając przycisk "WGRAJ".
-                        </p>
-                        <div class="col-md-6">
-                            <img class='img-fluid img-margin' src="static/img/snip3.png">
-                        </div>
-                        <div class="col-md-6">
-                            <img class='img-fluid img-margin' src="static/img/snip4.png">
-                        </div>
-                        <hr>
-                        <p>
-                            Kiedy uda się wrzucić plik ZIP na serwer, zaznacz go używając checkboxa
-                            po lewej stronie i wybierz opcję "Rozpakuj ZIP".
-                        </p>
-                        <img class='img-fluid img-margin' src="static/img/snip5.png">
-                        <hr>
-                        <p>
-                            Przejdź pod ścieżkę podobną do tej, którą widać na poniższym zrzucie ekranu
-                            Zaznacz wszystkie pliki i kliknij "Przenieś".
-                        </p>
-                        <img class='img-fluid img-margin' src="static/img/snip6.png">
-                        <hr>
-                        <p>
-                            Następnie kliknij na ikonkę pomiędzy ścieżką a przyciskiem "Ustaw dla wszystkich".
-                        </p>
-                        <img class='img-fluid img-margin' src="static/img/snip7.png">
-                        <hr>
-                        <div class="col-md-6">
-                        <p>
-                            Klikaj "Do góry", aż nie dojdziesz do głównego folderu na dysku. Następnie
-                            kliknij dwa razy "public_html" i zatwierdź przyciskiem "Wybierz".
-                            <br>
-                            Kliknij "USTAW DLA WSZYSTKICH", a następnie "PRZENIEŚ" na dole strony.
-                        </p>
-                         </div>
-                        <div class="col-md-6">
-                            <img class='img-fluid img-margin' src="static/img/snip8.png">
-                            <img class='img-fluid img-margin' src="static/img/snip9.png">
-                        </div>
-                        <p>
-                            Wpisz w wyszukiwarce adres URL, który został przez Ciebie kupiony.
-                            Strona powinna działać!
-                        </p>
-                        <center><h2>Gratuluję! Twoje portfolio powinno już działać!</h2></center>
-                    </div>
+                <h3><strong>Wrzucone pliki &mdash; konwencja nazewnicza</strong></h3>
+                <p>Wrzuć wszystkie swoje prace, które chcesz mieć w&nbsp;portfolio. Pamiętaj o&nbsp;zasadach wymienionych w punkcie <a href="#layout"><i>Układ strony</i></a>.
+                    <br>Dzięki zachowanej konwencji nazewniczej można w łatwy sposób przekazać tytuły swoich prac. <br>
+                    Zasada jest tylko jedna: wstaw znak "_" lub "-" pomiędzy słowa w tytule. Aplikacja rozdzieli słowa i pokaże sformatowany tytuł pracy.<br>
+                    <strong>Na przykład:</strong><br>
+                    Plik Mój_Tytuł.png będzie wyświetlał się jako Mój Tytuł. <br>
+                    Plik Drugi-tytuł.jpg będzie wyświetlał się jako Drugi tytuł.
+                </p>
+                <hr>
+            </div>
+            <center><h2>Skończyłeś? Kliknij <i>Generuj!</i></h2></center>
+            <br><br>
+            <h1 class="instructions-header" id="preview">Podgląd</h1>
+            <div class="instructions-list">
+                <h3><strong>Sprawdź, czy wszystko gra</strong></h3>
+                <p>Podgląd od Twojej właściwej strony różni się jedynie elementem u góry strony z trzema przyciskami.
+                Dlatego właśnie możesz bez obaw poklikać po swojej aplikacji, zobaczyć jak wyglądają podstrony, jak układają się zdjęcia, itd.</p>
+                <hr>
+                <h3><strong>Chcę coś jeszcze zmienić!</strong></h3>
+                <p>Jeśli chcesz coś jeszcze zmienić, ten przycisk zaprowadzi Cię do poprzedniej strony.</p>
+                <hr>
+                <h3><strong>Pobierz paczkę</strong></h3>
+                <p>Jeśli jesteś zadowolony z tego, jak wygląda Twoje portfolio, pobierz paczkę, a następnie wróć do instrukcji
+                    aby dowiedzieć się, co z nią dalej zrobić.</p>
+                <hr>
+                <h3><strong>Zabierz mnie do instrukcji</strong></h3>
+                <p>Ten przycisk zabierze Cię do instrukcji.</p>
+            </div>
+            <br><br>
+            <h1 class="instructions-header" id="package">Paczka</h1>
+            <div class="instructions-list row">
+                <h3><strong>Rozpakuj paczkę</strong></h3>
+                <div class="col-md-6">
+                    <p>Po pobraniu pliku na komputer, rozpakuj plik yourTemplates.zip klikając "Wyodrębniij wszystkie" w menu,
+                    które pojawia się po kliknięciu prawym przyciskiem myszy na pobrany plik.
+                    Po rozpakowaniu, przenieś folder static do folderu o nazwie składającej się z
+                    kilku cyfr rozdzielonych kropką.
+                    Następnie, jeśli chcesz, możesz uruchomić w przeglądarce którąś ze stron z
+                    rozszerzeniem .html i zobaczyć,
+                    jak portfolio wygląda lokalnie.
+                    Strony powinny być gotowe do przekazania ich na serwer.</p>
                 </div>
-           </div>
-            {% include 'footer.html' %}
-       </div>
+                <div class="col-md-6">
+                    <img class='img-fluid img-margin' src="static/img/snip1.png">
+                </div>
+
+                <hr>
+            </div>
+
+            <br><br>
+            <h1 class="instructions-header" id="hosting_and_address">Hosting i domena</h1>
+            <div class="instructions-list row">
+                <h3><strong>Kupno domeny i hostingu</strong></h3>
+                <div class="col-md-6">
+                    <p>Jeśli masz już domenę i hosting - pomiń ten krok.
+                    Jeśli jednak nie wiesz nawet za bardzo co to jest, czytaj uważnie!
+                    Domena to URL, główny link do Twojej strony.
+                        Hosting to miejsce na serwerze, które musisz kupić, aby móc pod
+                        swoją domeną zamieścić stronę.
+                        Ta instrukcja będzie bazować na działaniu sklepu home.pl,
+                        jednak jeśli czujesz się pewnie, możesz wybrać inny sklep.
+                        <br>
+                        Na stronie wyszukaj interesującą Cię nazwę i dodaj ją do koszyka. Po
+                        przejściu do koszyka, dobierz również hosting i certyfikat SSL.
+                    </p>
+                </div>
+                    <div class="col-md-6">
+                    <img class='img-fluid img-margin' src="static/img/snip2.png">
+                </div>
+                    <p>Po ukończeniu płatności odczekaj chwilę aż usługi się aktywują,
+                    a następnie uważnie prześledź kolejne instrukcje oferowane przez
+                    home.pl aby skonfigurować serwer.
+                    </p>
+                <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/jak-przypisac-domene-do-hostingu-w-panelu-klienta">
+                    Przypisz domenę do hostingu
+                </a></button>
+                <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/jak-zalogowac-sie-do-poczty-home-pl">
+                    Zaloguj się do poczty home.pl
+                </a></button>
+                <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/aktywacja-oplaconego-certyfikatu-ssl-w-panelu-klienta ">
+                    Aktywuj certyfikat SSL
+                </a></button>
+                <hr>
+            </div>
+            <h1 class="instructions-header" id="upload">Upload na serwer</h1>
+            <div class="instructions-list row">
+                <h3><strong>WebFTP</strong></h3>
+                <p>Aby przekazać pliki na serwer, użyj aplikacji WebFTP w panelu klienta</p>
+                    <button class="instruction-button"><a class="button-link" target="_blank" href="https://pomoc.home.pl/baza-wiedzy/jak-uruchomic-webftp-panelu-klienta">
+                    Uruchom WebFTP
+                </a></button>
+                <p>
+                    Wejdź do folderu public_html i usuń całą istniejącą zawartość. Następnie
+                    Otwórz lokalnie folder z zawartością portfolio i z menu po kliknięciu prawego
+                    przycisku myszy wybierz opcję "Skompresuj do pliku ZIP".
+                    Następnie wyślij ten plik na serwer klikając przycisk "WGRAJ".
+                </p>
+                <div class="col-md-6">
+                    <img class='img-fluid img-margin' src="static/img/snip3.png">
+                </div>
+                <div class="col-md-6">
+                    <img class='img-fluid img-margin' src="static/img/snip4.png">
+                </div>
+                <hr>
+                <p>
+                    Kiedy uda się wrzucić plik ZIP na serwer, zaznacz go używając checkboxa
+                    po lewej stronie i wybierz opcję "Rozpakuj ZIP".
+                </p>
+                <img class='img-fluid img-margin' src="static/img/snip5.png">
+                <hr>
+                <p>
+                    Przejdź pod ścieżkę podobną do tej, którą widać na poniższym zrzucie ekranu
+                    Zaznacz wszystkie pliki i kliknij "Przenieś".
+                </p>
+                <img class='img-fluid img-margin' src="static/img/snip6.png">
+                <hr>
+                <p>
+                    Następnie kliknij na ikonkę pomiędzy ścieżką a przyciskiem "Ustaw dla wszystkich".
+                </p>
+                <img class='img-fluid img-margin' src="static/img/snip7.png">
+                <hr>
+                <div class="col-md-6">
+                <p>
+                    Klikaj "Do góry", aż nie dojdziesz do głównego folderu na dysku. Następnie
+                    kliknij dwa razy "public_html" i zatwierdź przyciskiem "Wybierz".
+                    <br>
+                    Kliknij "USTAW DLA WSZYSTKICH", a następnie "PRZENIEŚ" na dole strony.
+                </p>
+                 </div>
+                <div class="col-md-6">
+                    <img class='img-fluid img-margin' src="static/img/snip8.png">
+                    <img class='img-fluid img-margin' src="static/img/snip9.png">
+                </div>
+                <p>
+                    Wpisz w wyszukiwarce adres URL, który został przez Ciebie kupiony.
+                    Strona powinna działać!
+                </p>
+                <center><h2>Gratuluję! Twoje portfolio powinno już działać!</h2></center>
+            </div>
+                </div>
+        {% include 'footer.html' %}
         {% include 'scripts.html' %}
     </body>
 </html>

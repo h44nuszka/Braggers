@@ -71,6 +71,13 @@ body {
     padding: 0 10%; /* Dodanie większego marginesu po bokach tekstu */
 }
 
+.content_instructions {
+    margin-top: 10%!important;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+
 .button-wrapper {
     margin: 20px 0;
 }
@@ -103,7 +110,7 @@ a:hover {
 
 .row{
     row-gap: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
 }
 
 nav {
@@ -282,28 +289,127 @@ input[type=file]::file-selector-button:hover {
     margin-bottom: 8%;
 }
 
-.img-overlay-container {
-    position: relative;
-    width: 37%;
+/* GALLERY */
+
+.imgrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.img-overlay-container:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
+.imgRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.imgColumn {
+    flex: 1 1 30%; /* Adjust the percentage to control the number of columns */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.img-overlay-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio */
+    overflow: hidden;
 }
 
 .img-overlay-container img {
-    position: absolute; /* Take your picture out of the flow */
+    position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0; /* Make the picture taking the size of it's parent */
-    width: 100%; /* This if for the object-fit */
-    height: 100%; /* This if for the object-fit */
-    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
-    object-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mySlides {
+    display: none;
+    text-align: center;
+}
+
+.mySlidesImg {
+    width: auto;
+    max-width: 100%;
+    max-height: 600px; /* Ensure the image doesn't exceed viewport height */
+    margin: 0 auto;
+    display: block;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.caption-container {
+    text-align: center;
+    padding: 2px 16px;
+    color: white;
+    font-size: 12px;
+}
+
+/* END OF GALLERY*/
 
 .radioInput {
     display: block;
@@ -620,3 +726,215 @@ footer{
     }
 }
 
+
+
+
+/* The popup container (hidden by default) */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure the popup is above other content */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    display: flex; /* Use flex to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Width of the popup */
+    max-width: 800px; /* Optional: Set a max-width */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow effect */
+    text-align: justify; /* Justify text alignment */
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    top: 10px; /* Adjust the distance from the top of the popup-content */
+    right: 10px; /* Adjust the distance from the right of the popup-content */
+
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+ol {
+    padding-left: 20px; /* Ensure list items are properly indented */
+}
+
+.close-btn {
+    background: none;
+    color: #E8E6CA;
+    border: none;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.select-container {
+    display: flex;
+    gap: 10px; /* Space between dropdown and the close button */
+    position: relative;
+        }
+.select-container select {
+    width: 150px; /* Adjust based on your needs */
+}
+
+.button.lang {
+        background: none;
+        border: none;
+        color: #E8E6CA;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px; /* Adjust icon size */
+        cursor: pointer;
+        outline: none;
+        transition: background 0.3s ease;
+    }
+
+
+.subpages {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+label {
+  display: block;
+}
+
+.ifta-label {
+  margin-bottom:-30px;
+  z-index:1;
+  color: #7b6864;
+  position:relative;
+  padding:0px 0px 0 20px;
+  pointer-events:none;
+}
+.ifta-field {
+  border:0;
+  background: #E8E6CA;
+  border-radius:6px;
+  padding:25px 10px 5px;
+  margin: 0 0 20px 10px;
+  width:50%;
+  box-shadow:inset 0 0 0 1px #ccc;
+}
+.ifta-field:focus {
+  -webkit-appearance:none;
+  outline:none;
+  box-shadow:inset 0 0 0 2px #634957;
+}
+
+.ifta-field-small {
+    border:0;
+  background: #E8E6CA;
+  border-radius:6px;
+  padding:5px 10px 5px;
+  margin: 0 0 0px 10px;
+  width:50%;
+  box-shadow:inset 0 0 0 1px #ccc;
+}
+
+.cke_reset {
+    width: 100%!important;
+    }
+
+
+details[open] summary ~ * {
+  animation: open 0.3s ease-in-out;
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  width: 100%;
+  padding: 0.5rem 0;
+  border-top: 2px solid;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 400;
+  list-style: none;
+}
+
+details strong {
+    position: relative;
+    left: 3%!important;
+}
+details summary:after {
+  content: "+";
+  position: absolute;
+  font-size: 1.75rem;
+  line-height: 0;
+  margin-top: 0.75rem;
+  left: 0;
+  font-weight: 200;
+  transform-origin: center;
+  transition: 200ms linear;
+}
+details[open] summary:after {
+  transform: rotate(45deg);
+  font-size: 2rem;
+}
+details summary {
+  outline: 0;
+}
+
+.Box{
+display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.Box div {
+    width: 100%;
+}
+
+input[type="color"] {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 80px;
+  outline: none;
+}
+
+#color-picker::-webkit-color-swatch {
+  border-radius: 100%;
+}

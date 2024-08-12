@@ -21,41 +21,41 @@
       <ul class="navbar-nav ms-auto my-sm-0">
         {% if menuElementsQty == 4: %}
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="mainPage.html">{{ menuItems[0] }}</a>
+            <a class="nav-link" aria-current="page" href="mainPage_l2.html">{{ menuItems_l2[0] }}</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="secondPage.html">{{ menuItems[1] }}</a>
+            <a class="nav-link" aria-current="page" href="secondPage_l2.html">{{ menuItems_l2[1] }}</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="thirdPage.html">{{ menuItems[2] }}</a>
+            <a class="nav-link" aria-current="page" href="thirdPage_l2.html">{{ menuItems_l2[2] }}</a>
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="fourthPage.html">{{ menuItems[3] }}</a>
+            <a class="nav-link" aria-current="page" href="fourthPage_l2.html">{{ menuItems_l2[3] }}</a>
           </li>
         {% elif menuElementsQty == 3: %}
           <li class="nav-item me-4">
             </li>
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="mainPage.html">{{ menuItems[0] }}</a>
+            <a class="nav-link" aria-current="page" href="mainPage_l2.html">{{ menuItems_l2[0] }}</a>
           </li>
           <li class="nav-item me-4">
           </li>
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="secondPage.html">{{ menuItems[1] }}</a>
+            <a class="nav-link" aria-current="page" href="secondPage_l2.html">{{ menuItems_l2[1] }}</a>
           </li>
           <li class="nav-item me-4">
-             <a class="nav-link" aria-current="page" href="thirdPage.html">{{ menuItems[2] }}</a>
+             <a class="nav-link" aria-current="page" href="thirdPage_l2.html">{{ menuItems_l2[2] }}</a>
           </li>
         {% elif menuElementsQty == 2: %}
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="mainPage.html">{{ menuItems[0] }}</a>
+            <a class="nav-link" aria-current="page" href="mainPage_l2.html">{{ menuItems_l2[0] }}</a>
           </li>
           <li class="nav-item me-4">
-              <a class="nav-link" aria-current="page" href="secondPage.html">{{ menuItems[1] }}</a>
+              <a class="nav-link" aria-current="page" href="secondPage_l2.html">{{ menuItems_l2[1] }}</a>
           </li>
         {% elif menuElementsQty == 1: %}
           <li class="nav-item me-4">
-            <a class="nav-link" aria-current="page" href="mainPage.html">{{ menuItems[0] }}</a>
+            <a class="nav-link" aria-current="page" href="mainPage_l2.html">{{ menuItems_l2[0] }}</a>
           </li>
         {% endif %}
 
@@ -64,11 +64,11 @@
         {% if secondLanguage %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            {{ language }}
+            {{ secondLanguage }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item" href="mainPage.html">{{ language }}</a></li>
             <li><a class="dropdown-item" href="mainPage_l2.html">{{ secondLanguage }}</a></li>
+            <li><a class="dropdown-item" href="mainPage.html">{{ language }}</a></li>
           </ul>
         </li>
         {% endif %}
