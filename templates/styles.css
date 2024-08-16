@@ -1,6 +1,7 @@
 body{
     background-color: {{ backgroundColor }};
     color: {{ fontColor }} ;
+    {{ background_display }};
     font-family: 'Montserrat', sans-serif;
     font-size: large;
 }

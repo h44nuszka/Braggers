@@ -1,0 +1,6 @@
+* sprawdzic style w zipie - czemu nie dzialaja
+
+
+Po wrzuceniu na serwer:
+* wszystkie sciezki porownac
+* zmienić ten fragment z wywalaniem preview

@@ -9,9 +9,30 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
         {% include 'styles.css' %}
+        {% if imgCrop == 'squared' %}
+        .img-overlay-container {
+            position: relative;
+            width: 100%; /* Szerokość kontenera równa szerokości kolumny */
+            padding-bottom: 100%; /* Ustala proporcje, wysokość równa szerokości (100%) */
+            overflow: hidden; /* Ukrywa część obrazu wykraczającą poza kontener */
+        }
+
+        .img-overlay-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Dopasowuje obraz do szerokości kontenera */
+            height: 100%; /* Dopasowuje obraz do wysokości kontenera */
+            object-fit: cover; /* Zachowuje proporcje i przycina obraz, jeśli jest większy */
+        }
+        {% endif %}
     </style>
 </head>
+{% if background_img %}
+<body style="background:url({{ imageFolder +  '/background.png' }});">
+{% else %}
 <body>
+{% endif %}
 
     <div class="container">
         <div class="row">
@@ -30,7 +51,7 @@
                             <summary>Eksport do PDF</summary>
                             <p>Oto instrukcja eksportu strony do PDF:</p>
                             <ol>
-                                <ul>Po kliknięciu przycisku "Eksport do PDF", w nowej karcie otworzy się ta sama strona bez panelu informacyjnego.</ul>
+                                <ul>Po kliknięciu przycisku "Pobierz PDF", w nowej karcie otworzy się ta sama strona bez panelu informacyjnego.</ul>
                                 <ul>Kliknij prawym przyciskiem myszy na ekran.</ul>
                                 <ul>W oknie dialogowym wybierz "Zapisz jako PDF".</ul>
                                 <a href="{{ url_for('pdf_preview') }}"><button class="button">Pobierz PDF</button></a>
@@ -50,11 +71,11 @@
                     {% set elements = namespace(value=0) %}
                     {% set iterator = namespace(value=1) %}
 
-                    {% for filename, name in filenamesNames %}
+                    {% for file in files %}
                     <div class="img-overlay-container">
-                        <img class='img-fluid' src="{{ imageFolder +  '/' + filename }}">
+                        <img class='img-fluid' src="{{ imageFolder +  '/' + file.file_path }}">
                         <div class="overlay" onclick="openModal();currentSlide({{ iterator.value }})"></div>
-                        <div class="text">{{ name }}</div>
+                        <div class="text">{{ file.label }}</div>
                     </div>
                     {% set elements.value = elements.value +1 %}
                     {% set iterator.value = iterator.value +1 %}
@@ -77,14 +98,15 @@
     <div id="myModal" class="modal">
         <span class="close cursor" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            {% for filename, name in filenamesNames2 %}
+            {% for file in files %}
                 <div class="mySlides">
-                    <img class="mySlidesImg" src="{{ imageFolder + '/' + filename }}" alt="{{ name }}">
+                    <img class="mySlidesImg" src="{{ imageFolder +  '/' + file.file_path }}" alt="{{ file.label }}">
                 </div>
-            {% endfor %}
+
             <div class="caption-container">
-                <p id="caption">{{ name }}</p>
+                <p id="caption">{{ file.label }}</p>
             </div>
+            {% endfor %}
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>

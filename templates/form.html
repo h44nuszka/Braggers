@@ -1,36 +1,36 @@
 <!DOCTYPE html>
+<html lang="pl">
     <head>
         <title>Stwórz swoje portfolio</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function () {
-                // Handle color theme selection
-                $('input[name="colors"]').click(function () {
-                    if ($(this).val() === "custom") {
-                        $(".Box").show('slow');
-                    } else {
-                        $(".Box").hide('slow');
-                    }
-                });
-
-                // Handle menu elements visibility
-                $('input[name="menuElements"]').click(function () {
-                    const selectedValue = $(this).val();
-                    $(".menuForm").hide('slow');
-                    $(".menuForm:lt(" + selectedValue + ")").show('slow');
-                });
-
-                // Trigger initial state
-                $('input[name="colors"]:checked').trigger('click');
-                $('input[name="menuElements"]:checked').trigger('click');
-
-                // Handle language selection
-                $('#language').change(function () {
-                    const selectedLang = $(this).val();
-                    $(".lang-content").hide();
-                    $(".lang-content[data-lang='" + selectedLang + "']").show();
-                }).trigger('change');
+            // Handle color theme selection
+            $('input[name="colors"]').click(function () {
+                if ($(this).val() === "custom") {
+                    $(".Box").show('slow');
+                } else {
+                    $(".Box").hide('slow');
+                }
             });
+
+            // Handle menu elements visibility
+            $('input[name="menuElements"]').click(function () {
+                const selectedValue = $(this).val();
+                $(".menuForm").hide('slow');
+                $(".menuForm:lt(" + selectedValue + ")").show('slow');
+            });
+
+            // Trigger initial state
+            $('input[name="colors"]:checked').trigger('click');
+            $('input[name="menuElements"]:checked').trigger('click');
+
+            // Handle language selection
+            $('#language').change(function () {
+                const selectedLang = $(this).val();
+                $(".lang-content").hide();
+                $(".lang-content[data-lang='" + selectedLang + "']").show();
+            }).trigger('change');
 
             // Initialize CKEditor for textareas
             function initializeCKEditors() {
@@ -42,6 +42,29 @@
             }
 
             $(document).ready(initializeCKEditors);
+
+            // Handle file input change
+            $('input[type="file"]').on('change', function(event) {
+                const files = event.target.files;
+                const fileList = $('#fileList');
+                fileList.empty();  // Clear existing file list
+
+                for (const file of files) {
+                    const fileItem = $('<div>').addClass('file-item');
+                    const fileName = $('<span>').addClass('file-name').text(file.name);
+                    const inputField = $('<input>').attr({
+                        type: 'text',
+                        name: `file_labels[]`,  // Array notation for handling multiple file labels
+                        placeholder: 'Wpisz własną etykietę',
+                        class: 'ifta-field-small'
+                    });
+
+                    fileItem.append(fileName).append(inputField);
+                    fileList.append(fileItem);
+                }
+            });
+
+        });
     </script>
         {% include 'head.html' %}
     </head>
@@ -68,35 +91,47 @@
                     <summary><strong>Wybierz motyw kolorystyczny.</strong></summary>
                     <h5>Możesz wybrać zarówno jeden z naszych gotowych motywów lub wybrać własne kolory.</h5>
                 </details>
-                <div class="col-md-5">
+                <div class="col-md">
                     <label>
                         <input type="radio" name="colors" id="light" value="light" checked/>
                         <img class='img-fluid img-margin' src="static/img/light.png">
                     </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md">
                     <label>
                         <input type="radio" name="colors" id="dark" value="dark"/>
                         <img class='img-fluid img-margin' src="static/img/dark.png" >
                     </label>
                 </div>
-                <div class="col-md-2">
-                    <label class="customContainer">
-                        <input type="radio" name="colors" id="custom" value="custom"/>
-                        <img class='img-fluid img-margin' src="static/img/custom.png" >
-                        <div class="custom">Własne</div>
-                    </label>
-                    <div class="Box" style="display:none">
-                        <div>
-                        <label>Tło</label>
-                            <input type="color" name="background" id="background" value="#865555">
-                        </div>
-                        <div>
-                            <label>Tekst</label>
-                            <input type="color" name="font" id="font" value="#ECE2E2">
-                        </div>
+            </div>
+            <div class="row">
+                <label class="radioInput">
+                    <input type="radio" name="colors" id="custom" value="custom"/>
+                    <div class="wlasne">Własne</div>
+                </label>
+                <div class="Box" style="display:none">
+                    <div>
+                    <label>Tło</label>
+                        <input type="color" name="background" id="background" value="#865555">
+                        <label>Tekst</label>
+                        <input type="color" name="font" id="font" value="#ECE2E2">
+                    </div>
+                    <div style="margin-left: 5%;">
+                        <label for="background_img">Obraz w tle (opcjonalnie)</label>
+                        <input type="file" id="background_img" name="background_img">
+
+                        <label class="radio-label"><input type="radio" name="background_display" id="cover" value="cover">
+                            Obraz tła będzie pokrywał cały element, bez rozciągania (obraz zachowa swoje oryginalne proporcje).
+                            </label>
+                        <label class="radio-label"><input type="radio" name="background_display" id="repeat" value="repeat">
+                            Jeśli obraz tła jest mniejszy od wyświetlacza, obraz będzie się powtarzał w poziomie i w pionie.
+                            </label>
+                        <label class="radio-label"><input type="radio" name="background_display" id="stretch" value="stretch">
+                            Obraz tła rozciągnie się aby pokryć całe tło.
+                            </label>
                     </div>
                 </div>
+
             </div>
 
             <!--Grid style-->
@@ -115,6 +150,28 @@
                     <label>
                         <input type="radio" name="grid" id="4x3" value="4x3"/>
                         <img class='img-fluid img-margin' src="static/img/grid4x3.png">
+                    </label>
+                </div>
+
+            </div>
+
+
+            <!--Grid style squared-->
+            <div class="row radioHidden">
+                <details>
+                    <summary><strong>Wybierz układ.</strong></summary>
+                    <h5>Obrazy będą wyświetlane w siatce w oryginalnych proporcjach lub przycięte do kwadratu aby uzyskać efekt regularnej siatki.</h5>
+                </details>
+                <div class="col-md">
+                    <label>
+                        <input type="radio" name="imgCrop" id="normal" value="normal"/>
+                        <img class='img-fluid img-margin' src="static/img/grid_normal.png">
+                    </label>
+                </div>
+                <div class="col-md">
+                    <label>
+                        <input type="radio" name="imgCrop" id="squared" value="squared"/>
+                        <img class='img-fluid img-margin' src="static/img/grid_squared.png">
                     </label>
                 </div>
 
@@ -159,51 +216,44 @@
                         Dlaczego akurat cztery? Im bardziej minimalistyczna strona, tym przejrzyściej wygląda i lepiej się prezentuje!
                         Spróbuj zmieścić swoje treści w tych czterech podstronach.</h5>
                 </details>
-                <div class="row">
-                    <div class="col-md">
-                        <p>Z ilu elementów ma się składać menu?</p>
-                        <div class='radioMargin'>
-                            <label class="radioInput"><input type="radio" name="menuElements" id="1" value="1" checked="checked">
-                                1
-                            <span class="checkmark"></span></label>
-                            <label class="radioInput"><input type="radio" name="menuElements" id="2" value="2">
-                                2
-                            <span class="checkmark"></span></label>
-                            <label class="radioInput"><input type="radio" name="menuElements" id="3" value="3">
-                                3
-                            <span class="checkmark"></span></label>
-                            <label class="radioInput"><input type="radio" name="menuElements" id="4" value="4">
-                                4
-                            <span class="checkmark"></span></label>
-                        </div>
+                <p>Z ilu elementów ma się składać menu?</p>
+                <div>
+                    <label class="radio-label"><input type="radio" name="menuElements" id="1" value="1" checked="checked">
+                        1</label><br>
+                    <label class="radio-label"><input type="radio" name="menuElements" id="2" value="2">
+                        2</label><br>
+                    <label class="radio-label"><input type="radio" name="menuElements" id="3" value="3">
+                        3</label><br>
+                    <label class="radio-label"><input type="radio" name="menuElements" id="4" value="4">
+                        4</label>
+                </div>
+                <div class="row firstPage menuForm"  style="display:none">
+                    <div class="subpages">
+                        <h4 style="width:100%;"><strong>Pierwsza podstrona</strong></h4>
+                        <label class="small ifta-label" for="menuItem1">Nazwa podstrony (główny język)</label>
+                        <input type="text" class='ifta-field' name="menuItem1" id="menuItem1" value="Galeria"/>
+                        <label class="small ifta-label" for="menuItem1_l2">Nazwa podstrony (drugi język)</label>
+                        <input type="text" class='ifta-field sec-lang-hide' name="menuItem1_l2" id="menuItem1_l2" value="Gallery" style="display:none;"/>
+                        <p>Tu nie wpisujesz swojej treści. Na tej podstronie wyświetlać się będą Twoje prace.</p>
                     </div>
-                    <div class="row firstPage menuForm"  style="display:none">
-                        <div class="subpages">
-                            <h4 style="width:100%;"><strong>Pierwsza podstrona</strong></h4>
-                            <label class="small ifta-label" for="menuItem1">Nazwa podstrony (główny język)</label>
-                            <input type="text" class='ifta-field' name="menuItem1" id="menuItem1" value="Galeria"/>
-                            <label class="small ifta-label" for="menuItem1_l2">Nazwa podstrony (drugi język)</label>
-                            <input type="text" class='ifta-field sec-lang-hide' name="menuItem1_l2" id="menuItem1_l2" value="Gallery" style="display:none;"/>
-                            <p>Tu nie wpisujesz swojej treści. Na tej podstronie wyświetlać się będą Twoje prace.</p>
-                        </div>
-                    </div>
-                    <div class="row secondPage menuForm"  style="display:none">
-                        <div class="subpages">
-                            <h4 style="width:100%;"><strong>Druga podstrona</strong></h4>
-                            <label class="small ifta-label" for="menuItem2">Nazwa podstrony (główny język)</label>
-                            <input type="text" class='ifta-field' name="menuItem2" id="menuItem2" value="O mnie"/>
-                            <textarea name="description2" id="menuItem2desc" class="bigInput">
-                            {% include 'bigInput.html' %}
-                            </textarea>
-                            <br>
-                            <label class="small ifta-label" for="menuItem2_l2">Nazwa podstrony (drugi język)</label>
-                            <input type="text" class='ifta-field sec-lang-hide' name="menuItem2_l2" id="menuItem2_l2" value="About"/>
-                            <textarea name="description2_l2" id="menuItem2desc_l2" class="bigInput sec-lang-hide">
-                            {% include 'bigInput.html' %}
-                            </textarea>
+                </div>
+                <div class="row secondPage menuForm"  style="display:none">
+                    <div class="subpages">
+                        <h4 style="width:100%;"><strong>Druga podstrona</strong></h4>
+                        <label class="small ifta-label" for="menuItem2">Nazwa podstrony (główny język)</label>
+                        <input type="text" class='ifta-field' name="menuItem2" id="menuItem2" value="O mnie"/>
+                        <textarea name="description2" id="menuItem2desc" class="bigInput">
+                        {% include 'bigInput.html' %}
+                        </textarea>
+                        <br>
+                        <label class="small ifta-label" for="menuItem2_l2">Nazwa podstrony (drugi język)</label>
+                        <input type="text" class='ifta-field sec-lang-hide' name="menuItem2_l2" id="menuItem2_l2" value="About"/>
+                        <textarea name="description2_l2" id="menuItem2desc_l2" class="bigInput sec-lang-hide">
+                        {% include 'bigInput.html' %}
+                        </textarea>
 
-                        </div>
                     </div>
+                </div>
                     <div class="row thirdPage menuForm"  style="display:none">
                         <div class="subpages">
                             <h4 style="width:100%;"><strong>Trzecia podstrona</strong></h4>
@@ -234,27 +284,23 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
             <div class="row">
                 <details>
-                    <summary><strong>Wrzuć swoje obrazy - pamiętaj o konwencji nazewniczej!</strong></summary>
+                    <summary><strong>Wrzuć swoje obrazy i nadaj im tytuły.</strong></summary>
                     <h5>Pamiętaj, że im więcej prac, tym lepiej Twoja strona będzie wyglądała.
                         Wybierz minimum sześć prac dla gridu z trzema kolumnami
                         i minimum osiem dla gridu z czterema kolumnami!
                         Weź też pod uwagę to, ile plików chcesz zawrzeć w portfolio,
-                    a ile kolumn wybrałeś. <br>
-                        Zachowaj konwencję nazewniczą, aby wyświetlać dobrze sformatowane tytuły prac:<br>
-                        Mój_Tytuł.png będzie wyświetlał się jako <i>Mój Tytuł</i>.
-                        <br>
-                        To znaczy: wielkie litery w nazwie pliku zostaną zachowane, a słowa oddzielone,
-                        jeśli dasz pomiędzy nie znak "_". <br>
-                        Więcej szczegółów znajdziesz w zakładce <i>Instrukcja</i></h5>
+                    a ile kolumn wybrałeś. Nadaj obrazom tytuły, które będą wyświetlać się na stronie po najechaniu na obraz. Jeśli nie wprowadzisz żadnej etykiety, wyświetlany tytuł dla tego obrazu to "Bez tytułu".<br>
+                    </h5>
                 </details>
                 <input class='fileButton' type="file" name="image" accept="image/*" multiple required>
+                <div id="fileList" class="file-list"></div>
                 <button type="submit" class="btn btn-primary btn-block mb-4">Generuj!</button>
             </div>
             </form>
+
             </div>
            {% include 'footer.html' %}
             {% include 'scripts.html' %}

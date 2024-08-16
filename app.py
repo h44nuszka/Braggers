@@ -82,7 +82,9 @@ def dataForm():
         session['portfolioName'] = request.form['portfolioName']
         session['backgroundColor'], session['fontColor'] = get_colors(request.form['colors'], request.form)
         session['columns'] = int(request.form['grid'].split("x", 1)[0]) - 1
+        session['imgCrop'] = request.form['imgCrop']
 
+        handle_background_display()
         handle_languages()
 
         session['menuElementsQty'] = int(request.form['menuElements'])
@@ -93,23 +95,24 @@ def dataForm():
         calculate_image_in_column()
 
         save_templates()
-        print(session)
         return redirect('mainPage.html')
 
 
 @app.route('/mainPage.html')
 def mainPage():
-    if not session.get("secure_filenames"):
+    if not session.get("uploaded_files"):
         return redirect("form")
     return render_template('mainPage.html',
                            imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
-                           filenamesNames2=zip(session['secure_filenames'], session['names']),
-                           filenamesNames=zip(session['secure_filenames'], session['names']),
+                           files=session['uploaded_files'],
                            imageInAColumn=session['imageInAColumn'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            menuItems=session['menuItems'],
                            menuElementsQty=session['menuElementsQty'],
                            imageQty=session['imageQty'],
                            columns=session['columns'],
+                           imgCrop=session['imgCrop'],
                            portfolioName=session['portfolioName'],
                            language=session['language'],
                            secondLanguage=session['secondLanguage'],
@@ -120,8 +123,11 @@ def mainPage():
 @app.route('/secondPage.html')
 def secondPage():
     return render_template('secondPage.html',
+                           imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                            menuItems=session['menuItems'],
                            menuElementsQty=session['menuElementsQty'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            backgroundColor=session['backgroundColor'],
                            fontColor=session['fontColor'],
                            language=session['language'],
@@ -133,8 +139,11 @@ def secondPage():
 @app.route('/thirdPage.html')
 def thirdPage():
     return render_template('thirdPage.html',
+                           imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                            menuItems=session['menuItems'],
                            menuElementsQty=session['menuElementsQty'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            backgroundColor=session['backgroundColor'],
                            fontColor=session['fontColor'],
                            language=session['language'],
@@ -146,9 +155,12 @@ def thirdPage():
 @app.route('/fourthPage.html')
 def fourthPage():
     return render_template('fourthPage.html',
+                           imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                            menuItems=session['menuItems'],
                            menuElementsQty=session['menuElementsQty'],
                            backgroundColor=session['backgroundColor'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            fontColor=session['fontColor'],
                            language=session['language'],
                            secondLanguage=session['secondLanguage'],
@@ -158,17 +170,19 @@ def fourthPage():
 
 @app.route('/mainPage_l2.html')
 def mainPage_l2():
-    if not session.get("secure_filenames"):
+    if not session.get('uploaded_files'):
         return redirect("form")
     return render_template('mainPage_l2.html',
                            imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
-                           filenamesNames2=zip(session['secure_filenames'], session['names']),
-                           filenamesNames=zip(session['secure_filenames'], session['names']),
+                           files=session['uploaded_files'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            imageInAColumn=session['imageInAColumn'],
                            menuItems_l2=session['menuItems_l2'],
                            menuElementsQty=session['menuElementsQty'],
                            imageQty=session['imageQty'],
                            columns=session['columns'],
+                           imgCrop=session['imgCrop'],
                            portfolioName=session['portfolioName'],
                            language=session['language'],
                            secondLanguage=session['secondLanguage'],
@@ -179,8 +193,11 @@ def mainPage_l2():
 @app.route('/secondPage_l2.html')
 def secondPage_l2():
     return render_template('secondPage_l2.html',
+                           imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                            menuItems_l2=session['menuItems_l2'],
                            menuElementsQty=session['menuElementsQty'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            backgroundColor=session['backgroundColor'],
                            fontColor=session['fontColor'],
                            language=session['language'],
@@ -192,9 +209,12 @@ def secondPage_l2():
 @app.route('/thirdPage_l2.html')
 def thirdPage_l2():
     return render_template('thirdPage_l2.html',
+                           imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                            menuItems_l2=session['menuItems_l2'],
                            menuElementsQty=session['menuElementsQty'],
                            backgroundColor=session['backgroundColor'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            fontColor=session['fontColor'],
                            language=session['language'],
                            secondLanguage=session['secondLanguage'],
@@ -205,9 +225,12 @@ def thirdPage_l2():
 @app.route('/fourthPage_l2.html')
 def fourthPage_l2():
     return render_template('fourthPage_l2.html',
+                           imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                            menuItems_l2=session['menuItems_l2'],
                            menuElementsQty=session['menuElementsQty'],
                            backgroundColor=session['backgroundColor'],
+                           background_img=session['background_img'],
+                           background_display=session['background_display'],
                            fontColor=session['fontColor'],
                            language=session['language'],
                            secondLanguage=session['secondLanguage'],
@@ -236,13 +259,15 @@ def delete():
 def pdf_preview():
     page_template = render_template('mainPagePDF.html',
                                     imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
-                                    filenamesNames=zip(session['secure_filenames'], session['names']),
-                                    filenamesNames2=zip(session['secure_filenames'], session['names']),
+                                    files=session['uploaded_files'],
                                     imageInAColumn=session['imageInAColumn'],
+                                    background_img=session['background_img'],
+                                    background_display=session['background_display'],
                                     menuItems=session['menuItems'],
                                     menuElementsQty=session['menuElementsQty'],
                                     imageQty=session['imageQty'],
                                     columns=session['columns'],
+                                    imgCrop=session['imgCrop'],
                                     portfolioName=session['portfolioName'],
                                     language=session['language'],
                                     secondLanguage=session['secondLanguage'],
@@ -263,7 +288,8 @@ def create_zip_and_send():
 
     file_name = 'yourTemplates.zip'
     directory = session['DOWNLOAD_FOLDER']
-    directory_static = '/home/epi/19_rajh/Bragger/static/staticTemplates/static'
+    #directory_static = '/home/epi/19_rajh/Bragger/static/staticTemplates/static'
+    directory_static = '/mnt/c/Users/hania/Documents/studia/lic/static/staticTemplates/static'
 
     memory_file = BytesIO()
     with ZipFile(memory_file, 'w') as zf:
@@ -294,14 +320,28 @@ def get_colors(color_choice, form):
 
 
 def calculate_image_in_column():
-    if session['imageQty'] % (session['columns'] + 1) < 2:
-        session['imageInAColumn'] = session['imageQty'] // (session['columns'] + 1)
-    else:
-        if session['imageQty'] == 6:
-            session['imageInAColumn'] = session['imageQty'] // (session['columns'] + 1)
-        else:
-            session['imageInAColumn'] = math.ceil(session['imageQty'] / (session['columns'] + 1))
+    # Sprawdź, czy liczba obrazów jest zerowa lub ujemna
+    if session['imageQty'] <= 0:
+        session['imageInAColumn'] = 0
+        return
 
+    # Oblicz liczbę kolumn
+    num_columns = session['columns'] + 2
+
+    # Sprawdź, czy liczba kolumn jest większa niż liczba obrazów
+    if num_columns >= session['imageQty']:
+        # Każda kolumna dostaje jeden obraz, pozostałe kolumny pozostaną puste
+        session['imageInAColumn'] = 1
+        return
+
+    # Oblicz liczbę obrazów na kolumnę
+    # Podstawowa liczba obrazów na kolumnę
+    base_count = session['imageQty'] // num_columns
+    # Pozostałe obrazy, które muszą być równomiernie rozdzielone
+    remainder = session['imageQty'] % num_columns
+
+    # Jeśli są resztki, zwiększamy liczbę obrazów w kilku kolumnach
+    session['imageInAColumn'] = base_count + (1 if remainder > 0 else 0)
 
 def append_menu_items_and_content():
     """
@@ -319,37 +359,48 @@ def append_menu_items_and_content():
             if i > 1:
                 session['siteContent_l2'].append(request.form[f'description{i}_l2'])
 
+
 def create_files_list():
     """
     Save uploaded images.
-    session['secure_filenames'] is a list of filenames.
-    session['names'] is a list of filenames formatted to names displayed on the template.
+    session['uploaded_files']:
+        'file_path': file_path,
+        'label': label
     """
-    filenames = []
-    session['names'] = []
-    session['secure_filenames'] = []
-    images = request.files.getlist('image')
 
     if not os.path.exists(session['IMAGE_UPLOADS']):
         os.makedirs(session['IMAGE_UPLOADS'])
 
-    for image in images:
-        filename = secure_filename(image.filename)
-        image.save(os.path.join(session['IMAGE_UPLOADS'], filename))
-        filenames.append(filename)
+    # Pobieranie etykiet
+    file_labels = request.form.getlist('file_labels[]')
 
-    session['imageQty'] = len(images)
-    session['names'] = sorted([
-        # For each filename in the list:
-        # 1. Split the filename at the first period ('.') and take the part before it
-        # 2. Replace underscores ('_') with spaces (' ')
-        # 3. Replace hyphens ('-') with spaces (' ')
-        # 4. Collect all processed names into a list
-        name.split('.', 1)[0].replace("_", " ").replace("-", " ")
-        for name in filenames
-        # Sort the processed list of names alphabetically
-    ])
-    session['secure_filenames'] = sorted(filenames)
+    # Przechowywanie plików
+    uploaded_files = request.files.getlist('image')  # Pobieranie listy przesyłanych plików
+    session['uploaded_files'] = []
+    session['imageQty'] = len(uploaded_files)
+
+    for i, file in enumerate(uploaded_files):
+        if file:
+            # Zapisz plik na dysku
+            original_filename = secure_filename(file.filename)
+            file_path = os.path.join(session['IMAGE_UPLOADS'], original_filename)
+            file.save(file_path)
+
+            # Pobierz etykietę dla pliku
+            label = file_labels[i] if i < len(file_labels) and file_labels[i].strip() else 'Bez tytułu'
+
+            # Dodaj informacje do sesji (lub przechowuj w bazie danych)
+            session['uploaded_files'].append({
+                'file_path': original_filename,
+                'label': label
+            })
+
+    background_img = request.files.get('background_img')
+    session['background_img'] = False
+    if background_img and background_img.filename:
+        file_path = os.path.join(session['IMAGE_UPLOADS'], 'background.png')
+        background_img.save(file_path)
+        session['background_img'] = True
     session.modified = True
 
 
@@ -360,15 +411,30 @@ def handle_languages():
     # Handle None or empty second_language
     if not session['is_second_language']:
         session['secondLanguage'] = None
-        session['menuItems_l2'] = None
-        session['siteContent_l2'] = None
+        session['menuItems_l2'] = []
+        session['siteContent_l2'] = []
 
     else:
         session['secondLanguage'] = request.form.get('secondLanguage')
         session['menuItems_l2'] = []
         session['siteContent_l2'] = []
 
-    print(session)
+    session.modified = True
+
+
+def handle_background_display():
+    session['background_display'] = ''
+    background_display = request.form.get('background_display', '')
+    if background_display:
+        if background_display == 'cover':
+            session['background_display'] = 'background-repeat: no-repeat!important;background-attachment: fixed!important;background-size: cover!important;'
+        elif background_display == 'repeat':
+            session['background_display'] = ''
+        elif background_display == 'stretch':
+            session['background_display'] = 'background-repeat: no-repeat!important; background-attachment:fixed!important; background-size: 100% 100%!important;'
+        else:
+            session['background_display'] = ''
+
     session.modified = True
 
 
@@ -405,13 +471,15 @@ def save_template(page_name):
         name = 'index.html'
         page_template = render_template(main_name,
                                         imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
-                                        filenamesNames=zip(session['secure_filenames'], session['names']),
-                                        filenamesNames2=zip(session['secure_filenames'], session['names']),
+                                        files=session['uploaded_files'],
                                         imageInAColumn=session['imageInAColumn'],
+                                        background_img=session['background_img'],
+                                        background_display=session['background_display'],
                                         menuItems=session['menuItems'],
                                         menuElementsQty=session['menuElementsQty'],
                                         imageQty=session['imageQty'],
                                         columns=session['columns'],
+                                        imgCrop=session['imgCrop'],
                                         portfolioName=session['portfolioName'],
                                         language=session['language'],
                                         secondLanguage=session['secondLanguage'],
@@ -428,13 +496,15 @@ def save_template(page_name):
         name = 'index.html'
         page_template = render_template(main_name,
                                         imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
-                                        filenamesNames=zip(session['secure_filenames'], session['names']),
-                                        filenamesNames2=zip(session['secure_filenames'], session['names']),
+                                        files=session['uploaded_files'],
                                         imageInAColumn=session['imageInAColumn'],
+                                        background_img=session['background_img'],
+                                        background_display=session['background_display'],
                                         menuItems_l2=session['menuItems_l2'],
                                         menuElementsQty=session['menuElementsQty'],
                                         imageQty=session['imageQty'],
                                         columns=session['columns'],
+                                        imgCrop=session['imgCrop'],
                                         portfolioName=session['portfolioName'],
                                         language=session['language'],
                                         secondLanguage=session['secondLanguage'],
@@ -447,9 +517,12 @@ def save_template(page_name):
             "")
     else:
         page_template = render_template(page_name,
+                                        imageFolder=session['IMAGE_UPLOADS_IMG_PATH'],
                                         menuItems=session['menuItems'],
                                         menuItems_l2=session['menuItems_l2'],
                                         menuElementsQty=session['menuElementsQty'],
+                                        background_img=session['background_img'],
+                                        background_display=session['background_display'],
                                         backgroundColor=session['backgroundColor'],
                                         fontColor=session['fontColor'],
                                         language=session['language'],
@@ -484,8 +557,8 @@ def clear_session():
     keys_to_clear = [
         'portfolioName', 'backgroundColor', 'fontColor', 'columns',
         'language', 'secondLanguage', 'menuElementsQty', 'menuItems', 'menuItems_l2',
-        'siteContent', 'siteContent_l2', 'imageQty', 'imageInAColumn', 'IMAGE_UPLOADS',
-        'DOWNLOAD_FOLDER', 'IMAGE_UPLOADS_IMG_PATH', 'filenames', 'names', 'secure_filenames'
+        'siteContent', 'siteContent_l2', 'imageQty', 'imageInAColumn', 'IMAGE_UPLOADS', 'imgCrop',
+        'DOWNLOAD_FOLDER', 'IMAGE_UPLOADS_IMG_PATH', 'filenames', 'names', 'uploaded_files', 'secure_filenames'
     ]
     for key in keys_to_clear:
         session.pop(key, None)

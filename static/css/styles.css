@@ -836,6 +836,7 @@ label {
   position:relative;
   padding:0px 0px 0 20px;
   pointer-events:none;
+  font-size: 1.2rem;
 }
 .ifta-field {
   border:0;
@@ -845,6 +846,7 @@ label {
   margin: 0 0 20px 10px;
   width:50%;
   box-shadow:inset 0 0 0 1px #ccc;
+  font-size: 1.3rem;
 }
 .ifta-field:focus {
   -webkit-appearance:none;
@@ -858,8 +860,9 @@ label {
   border-radius:6px;
   padding:5px 10px 5px;
   margin: 0 0 0px 10px;
-  width:50%;
+  width:40%;
   box-shadow:inset 0 0 0 1px #ccc;
+  font-size: 1.3rem;
 }
 
 .cke_reset {
@@ -919,8 +922,8 @@ details summary {
 
 .Box{
 display: flex;
-    align-items: center;
-    justify-content: space-between
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .Box div {
@@ -937,4 +940,86 @@ input[type="color"] {
 
 #color-picker::-webkit-color-swatch {
   border-radius: 100%;
+}
+
+
+.file-list {
+    margin-top: 20px;
+}
+.file-item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.file-name {
+    flex: 1;
+    margin-right: 10px;
+}
+.file-input {
+    flex: 2;
+}
+
+
+.wlasne {
+    border:1px solid #6c5ce7;
+    border-radius: .2em;
+    font-size:large;
+    padding: 0.3%;
+    width: 10%;
+    border-style: none;
+    background-color:#E8E6CA;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 5px 0 rgb(0 0 0 / 20%), 0 2px 10px 0 rgb(0 0 0 / 10%);;
+    transition: 1s;
+}
+
+input[type=radio] {
+  --s: 0.9em;     /* control the size */
+  --c: #E8E6CA; /* the active color */
+
+  height: var(--s);
+  aspect-ratio: 1;
+  border: calc(var(--s)/8) solid #E8E6CA;
+  padding: calc(var(--s)/8);
+  background:
+     radial-gradient(farthest-side,var(--c) 94%,#0000)
+     50%/0 0 no-repeat content-box;
+  border-radius: 50%;
+  outline-offset: calc(var(--s)/10);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font-size: inherit;
+  transition: .3s;
+}
+input[type=radio]:checked {
+  border-color: var(--c);
+  background-size: 100% 100%;
+}
+
+input[type=radio]:disabled {
+  background:
+     linear-gradient(#939393 0 0)
+     50%/100% 20% no-repeat content-box;
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+@media print {
+  input[type=radio] {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+    background: none;
+  }
+}
+
+.radio-label {
+  display:inline-flex;
+  align-items: baseline;
+  gap:10px;
+  margin:5px 0;
+  cursor: pointer;
 }
